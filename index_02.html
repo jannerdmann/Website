@@ -14,29 +14,27 @@
 
   /* Passwort-Container */
   #password-container {
-    display:flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
     text-align:center;
   }
+
   #password-container input[type="password"] {
     padding: 8px;
-    font-size: 16px;
+    font-size: 8px;
   }
+
   #password-container button {
     padding: 8px 12px;
-    font-size: 16px;
+    font-size: 8px;
     margin-left: 5px;
     cursor: pointer;
   }
+
   #password-container p {
     color:red;
     display:none;
     margin-top: 10px;
   }
-
+  
   /* Inhalt zunächst versteckt */
   #content {
     display:none;
@@ -183,7 +181,7 @@
 
 <script>
   // Passwortprüfung
-  const PASSWORD = "1234"; // <-- hier dein Passwort eintragen
+  const PASSWORD = "YPY>D$=K"; // <-- hier dein Passwort eintragen
 
   function checkPassword() {
     const input = document.getElementById('password').value;
