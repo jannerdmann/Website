@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bild-Slider Minimal (angepasst)</title>
+<style>
+  html,body {
+    height: 100%;
+    margin: 0;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Text oben links, linksbündig */
+  .top-left {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    text-align: left;
+    line-height: 1.3;
+    font-size: 18px;
+    color: black;
+  }
+
+  /* Zentrierung der Seite */
+  .page {
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Bildslider – 40% kleiner als original */
+  .slider {
+    position: relative;
+    width: min(540px, 95vw);
+    aspect-ratio: 16/9;
+    overflow: visible;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+  }
+  .slide.active {
+    display: block;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Pfeile – 15% kleiner (ca. 20px) und eckig */
+  .btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 20;
+  }
+
+  .btn svg {
+    width: 20px;
+    height: 20px;
+    display:block;
+  }
+
+  /* eckige Pfeile */
+  .btn svg path {
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    stroke-width: 2;
+  }
+
+  /* Pfeile außerhalb des Bildes */
+  .left { left: calc(-1 * (20px + 16px)); }
+  .right{ right: calc(-1 * (20px + 16px)); }
+
+  @media (max-width:520px){
+    .left { left: 8px; }
+    .right{ right: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Text oben links -->
+<div class="top-left">
+  Jann Erdmann<br>
+  Arbeiten
+</div>
+
+<div class="page">
+  <div class="slider" id="slider">
+
+    <!-- Bilder -->
+    <div class="slide active">
+      <img src="https://picsum.photos/id/1025/1200/700" alt="">
+    </div>
+    <div class="slide">
+      <img src="https://picsum.photos/id/1015/1200/700" alt="">
+    </div>
+    <div class="slide">
+      <img src="https://picsum.photos/id/1040/1200/700" alt="">
+    </div>
+
+    <!-- Pfeile -->
+    <button class="btn left" id="prevBtn">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="black"/>
+      </svg>
+    </button>
+
+    <button class="btn right" id="nextBtn">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 6L15 12L9 18" stroke="black"/>
+      </svg>
+    </button>
+
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  document.getElementById('prevBtn').onclick = () => {
+    index = (index - 1 + slides.length) % slides.length;
+    update();
+  };
+
+  document.getElementById('nextBtn').onclick = () => {
+    index = (index + 1) % slides.length;
+    update();
+  };
+
+  function update() {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+</script>
+</body>
+</html>
