@@ -100,41 +100,16 @@
 <div id="content">
   <!-- Text oben links -->
   <div class="top-left">
-    Jann Erdmann<br>
-    Arbeiten
+  Jann Erdmann<br>
+  <span style="font-style: italic;">site currently unfinished</span><br>
+  >Arbeiten<br>
+  >Kontakt
   </div>
 
   <!-- Text unten links -->
   <div class="bottom-left">
     © Jann Erdmann, 2026
   </div>
-
-  <div class="page">
-    <div class="slider" id="slider">
-      <div class="slide active">
-        <img src="images/Arbeit_01_WS.jpg" alt="">
-      </div>
-      <div class="slide">
-        <img src="images/Arbeit_02_WS.jpg" alt="">
-      </div>
-      <div class="slide">
-        <img src="images/Arbeit_03_WS.jpg" alt="">
-      </div>
-
-      <button class="btn left" id="prevBtn">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M15 18L9 12L15 6" stroke="black"/>
-        </svg>
-      </button>
-
-      <button class="btn right" id="nextBtn">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M9 6L15 12L9 18" stroke="black"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-</div>
   
   <script>
   // Exaktes Passwort
@@ -154,25 +129,6 @@
   document.getElementById("password").addEventListener("keypress", function(e) {
     if(e.key === "Enter") checkPassword();
   });
-
-  // Slider-Funktion
-  const slides = document.querySelectorAll('.slide');
-  let index = 0;
-
-  document.getElementById('prevBtn').onclick = () => {
-    index = (index - 1 + slides.length) % slides.length;
-    update();
-  };
-
-  document.getElementById('nextBtn').onclick = () => {
-    index = (index + 1) % slides.length;
-    update();
-  };
-
-  function update() {
-    slides.forEach(s => s.classList.remove('active'));
-    slides[index].classList.add('active');
-  }
 </script>
 </body>
 </html>
